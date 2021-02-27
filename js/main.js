@@ -34,12 +34,16 @@ const isIOS =
 
 let init = () => {
     START_BTN.addEventListener('click', (event) => {
-        init();
         locationPoint(SELECT.value);
-        startCompass(); 
+
+        if (!isIOS) {
+            window.addEventListener("deviceorientationabsolute", handler, true);
+        } else {
+            startCompass(); 
+        }
     })
+
     navigator.geolocation.getCurrentPosition((position) => locationHandler(position));
-    startCompass();
 }
 
 let locationPoint = (value) => {
@@ -61,8 +65,6 @@ let startCompass = () => {
             }
         })
         .catch(() => alert('not supported'));
-    } else {
-        window.addEventListener("deviceorientationabsolute", handler, true);
     }
 }
 
