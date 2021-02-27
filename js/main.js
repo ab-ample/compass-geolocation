@@ -34,8 +34,9 @@ const isIOS =
 
 let init = () => {
     START_BTN.addEventListener('click', (event) => {
+        init();
         locationPoint(SELECT.value);
-        startCompass();
+        startCompass(); 
     })
     navigator.geolocation.getCurrentPosition(locationHandler);
 
