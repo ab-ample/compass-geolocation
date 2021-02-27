@@ -39,7 +39,7 @@ let init = () => {
                 }
             }
         });
-        startCompass;
+        startCompass();
     });
 
     startBtn.addEventListener("click", () => {
@@ -52,7 +52,7 @@ let init = () => {
                 }
             }
         });
-        startCompass;
+        startCompass();
     });
     navigator.geolocation.getCurrentPosition(locationHandler);
 
