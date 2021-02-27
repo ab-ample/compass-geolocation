@@ -42,7 +42,18 @@ let init = () => {
         startCompass;
     });
 
-    startBtn.addEventListener("click", startCompass);
+    startBtn.addEventListener("click", () => {
+        locations.forEach(element => {
+            if (element.name === select.value) {
+                point = {
+                    name: element.name,
+                    lat: element.lat,
+                    lng: element.lng
+                }
+            }
+        });
+        startCompass;
+    });
     navigator.geolocation.getCurrentPosition(locationHandler);
 
     if (!isIOS) {
