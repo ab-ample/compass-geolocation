@@ -34,7 +34,12 @@ let init = () => {
 
         navigator.geolocation.getCurrentPosition((position) => locationHandler(position));
         locationPoint(SELECT.value);
-        startCompass();
+        
+        if (!isIOS) {
+            window.addEventListener("deviceorientationabsolute", handler, true);
+        } else {
+           startCompass(); 
+        }
     })
 }
 
