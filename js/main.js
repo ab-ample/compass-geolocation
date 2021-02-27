@@ -3,6 +3,23 @@
 // 2. Lidl 52.5017831,13.4148336
 // 3. U Kottbusser Tor 52.4998934,13.4172549
 
+let locations = [
+    {
+        name: 'Drachenbrunnen',
+        lat: 52.5028217,
+        lng: 13.4164882
+    },
+    {
+        name: 'Lidl',
+        lat: 52.5017831,
+        lng: 13.4148336
+    },
+    {
+        name: 'U Kottbusser Tor',
+        lat: 52.4998934,
+        lng: 13.4172549
+    }
+]
 const select = document.querySelector('#location');
 const compassCircle = document.querySelector(".compass-circle");
 const myPoint = document.querySelector(".my-point");
@@ -12,7 +29,18 @@ const isIOS =
     navigator.userAgent.match(/AppleWebKit/);
 
 let init = () => {
-    select.addEventListener("change", startCompass);
+    select.addEventListener("change", (e) => {
+        locations.forEach(element => {
+            if (element.name === select.value) {
+                point = {
+                    name: element.name,
+                    lat: element.lat,
+                    lng: element.lng
+                }
+            }
+        });
+        startCompass;
+    });
 
     startBtn.addEventListener("click", startCompass);
     navigator.geolocation.getCurrentPosition(locationHandler);
@@ -66,10 +94,12 @@ let locationHandler = (position) => {
 
 let calcDegreeToPoint = (latitude, longitude) => {
     // Qibla geolocation
-    const point = {
-        lat: 21.422487,
-        lng: 39.826206
-    };
+    // const point = {
+    //     lat: 21.422487,
+    //     lng: 39.826206
+    // };
+
+    alert('going to ' + point.name);
 
     const phiK = (point.lat * Math.PI) / 180.0;
     const lambdaK = (point.lng * Math.PI) / 180.0;
