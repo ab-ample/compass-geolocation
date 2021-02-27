@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <select name="location" id="location">
-    <option value="Drachenbrunnen" selected="selected">Drachenbrunnen</option>
-    <option value="Lidl">Lidl</option>
-    <option value="U Kottbusser Tor">U Kottbusser Tor</option>
-  </select>
     <div class="compass">
       <div class="arrow"></div>
       <div class="compass-circle"></div>
       <div class="my-point"></div>
     </div>
+    <select name="location" class="locations">
+      <option value="Drachenbrunnen">Drachenbrunnen</option>
+      <option value="Lidl" selected="selected">Lidl</option>
+      <option value="U Kottbusser Tor">U Kottbusser Tor</option>
+    </select>
     <button class="start-btn">Start compass</button>
     <script src="js/main.js"></script>
   </body>
