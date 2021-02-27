@@ -1,8 +1,3 @@
-
-// 1. Drachenbrunnen 52.5028217,13.4164882
-// 2. Lidl 52.5017831,13.4148336
-// 3. U Kottbusser Tor 52.4998934,13.4172549
-
 let locations = [
     {
         name: 'Drachenbrunnen',
@@ -32,21 +27,20 @@ const isIOS =
     navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
     navigator.userAgent.match(/AppleWebKit/);
 
+// inicialize
 let init = () => {
+
     START_BTN.addEventListener('click', (event) => {
-        
+
         navigator.geolocation.getCurrentPosition((position) => locationHandler(position));
         locationPoint(SELECT.value);
-        
-        if (!isIOS) {
-            window.addEventListener("deviceorientationabsolute", handler, true);
-        } else {
-            startCompass(); 
-        }
+        startCompass();
     })
 }
 
+// get value from select form
 let locationPoint = (value) => {
+
     locations.forEach(location => {
         if (location.name === value) {
             point = location;
@@ -54,7 +48,9 @@ let locationPoint = (value) => {
     });
 }
 
+// start DeviceOrientationEvent on Apple devices
 let startCompass = () => {
+
     if (isIOS) {
         DeviceOrientationEvent.requestPermission()
         .then((response) => {
@@ -68,8 +64,10 @@ let startCompass = () => {
     }
 }
 
-let handler = (e) => {
-    compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+// rotate the compass and display correct direction (variation of 15 degrees)
+let handler = (event) => {
+
+    compass = event.webkitCompassHeading || Math.abs(event.alpha - 360);
     COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
 
     if (
@@ -84,7 +82,9 @@ let handler = (e) => {
     }
 }
 
+// get current coords
 let locationHandler = (position) => {
+
     let { latitude, longitude } = position.coords;
     pointDegree = calcDegreeToPoint(latitude, longitude);
 
@@ -93,7 +93,9 @@ let locationHandler = (position) => {
     }
 }
 
+// calculate compass degree
 let calcDegreeToPoint = (latitude, longitude) => {
+    
     const phiK = (point.lat * Math.PI) / 180.0;
     const lambdaK = (point.lng * Math.PI) / 180.0;
     const phi = (latitude * Math.PI) / 180.0;
@@ -105,6 +107,7 @@ let calcDegreeToPoint = (latitude, longitude) => {
             Math.cos(phi) * Math.tan(phiK) -
             Math.sin(phi) * Math.cos(lambdaK - lambda)
         );
+
     return Math.round(psi);
 }
 
