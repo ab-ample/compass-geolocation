@@ -11,7 +11,7 @@
       navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
       navigator.userAgent.match(/AppleWebKit/);
 
-    function init() {
+    let init = () => {
       select.addEventListener("change", startCompass);
 
       startBtn.addEventListener("click", startCompass);
@@ -22,7 +22,7 @@
       }
     }
 
-    function startCompass() {
+    let startCompass = () => {
       if (isIOS) {
         DeviceOrientationEvent.requestPermission()
           .then((response) => {
@@ -36,7 +36,7 @@
       }
     }
 
-    function handler(e) {
+    let handler = (e) => {
       compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
       compassCircle.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
 
@@ -55,7 +55,7 @@
 
     let pointDegree;
 
-    function locationHandler(position) {
+    let locationHandler = (position) => {
       const { latitude, longitude } = position.coords;
       pointDegree = calcDegreeToPoint(latitude, longitude);
 
@@ -64,7 +64,7 @@
       }
     }
 
-    function calcDegreeToPoint(latitude, longitude) {
+    let calcDegreeToPoint = (latitude, longitude) => {
       // Qibla geolocation
       const point = {
         lat: 21.422487,
