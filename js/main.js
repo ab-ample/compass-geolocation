@@ -18,6 +18,7 @@ let locations = [
 
 let point = locations[0]; // default Lidl
 let pointDegree;
+let compass2;
 
 const COMPASS_CIRCLE = document.querySelector(".compass-circle");
 const MY_POINT = document.querySelector(".my-point");
@@ -74,10 +75,13 @@ let handler = (event) => {
 
     compass = event.webkitCompassHeading || Math.abs(event.alpha - 360);
 
+    compass2 = compass - pointDegree;
+
     COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
 
     document.querySelector('#info').innerHTML = compass;
     document.querySelector('#info2').innerHTML = pointDegree;
+    document.querySelector('#info3').innerHTML = compass2;
 
     if (
         (pointDegree < Math.abs(compass) &&
@@ -116,8 +120,6 @@ let calcDegreeToPoint = (latitude, longitude) => {
             Math.cos(phi) * Math.tan(phiK) -
             Math.sin(phi) * Math.cos(lambdaK - lambda)
         );
-        
-        document.querySelector('#info3').innerHTML = Math.round(psi);
 
     return Math.round(psi);
 }
