@@ -73,7 +73,11 @@ let startCompass = () => {
 let handler = (event) => {
 
     compass = event.webkitCompassHeading || Math.abs(event.alpha - 360);
-    compass2 = Maths.abs(compass - pointDegree) - pointDegree;
+
+    compass2 = compass - pointDegree
+    compass2 = Maths.abs(compass2);
+    compass2 = compass2 - pointDegree;
+
     COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
 
     document.querySelector('#info').innerHTML = compass;
