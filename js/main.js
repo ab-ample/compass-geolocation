@@ -76,7 +76,6 @@ let handler = (event) => {
     COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
 
     document.querySelector('#info').innerHTML = compass;
-    document.querySelector('#info').innerHTML += pointDegree;
 
     if (
         (pointDegree < Math.abs(compass) &&
@@ -95,6 +94,8 @@ let locationHandler = (position) => {
 
     let { latitude, longitude } = position.coords;
     pointDegree = calcDegreeToPoint(latitude, longitude);
+
+    document.querySelector('#info').innerHTML += pointDegree;
 
     if (pointDegree < 0) {
         pointDegree = pointDegree + 360;
