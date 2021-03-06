@@ -75,6 +75,8 @@ let handler = (event) => {
     compass = event.webkitCompassHeading || Math.abs(event.alpha - 360);
     COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
 
+    console.log(compass);
+
     if (
         (pointDegree < Math.abs(compass) &&
         pointDegree + 15 > Math.abs(compass)) ||
