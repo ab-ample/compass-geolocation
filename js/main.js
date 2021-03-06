@@ -95,7 +95,7 @@ let locationHandler = (position) => {
     let { latitude, longitude } = position.coords;
     pointDegree = calcDegreeToPoint(latitude, longitude);
 
-    document.querySelector('#info').innerHTML += pointDegree;
+    document.querySelector('#info2').innerHTML = pointDegree;
 
     if (pointDegree < 0) {
         pointDegree = pointDegree + 360;
@@ -116,6 +116,8 @@ let calcDegreeToPoint = (latitude, longitude) => {
             Math.cos(phi) * Math.tan(phiK) -
             Math.sin(phi) * Math.cos(lambdaK - lambda)
         );
+        
+        document.querySelector('#info3').innerHTML = Math.round(psi);
 
     return Math.round(psi);
 }
