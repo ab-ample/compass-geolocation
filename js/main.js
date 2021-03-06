@@ -13,6 +13,11 @@ let locations = [
         name: 'U Kottbusser Tor',
         lat: 52.4998934,
         lng: 13.4172549
+    },
+    { //52.4973512,13.4449797
+        name: 'Aleksandrs, Otso & Diandra',
+        lat: 52.4973512,
+        lng: 13.4449797
     }
 ];
 
