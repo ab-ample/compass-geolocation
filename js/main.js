@@ -73,10 +73,12 @@ let startCompass = () => {
 let handler = (event) => {
 
     compass = event.webkitCompassHeading || Math.abs(event.alpha - 360);
-    COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-pointDegree}deg)`;
+    compass2 = event.webkitCompassHeading || Math.abs(event.alpha - 360 - pointDegree);
+    COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
 
     document.querySelector('#info').innerHTML = compass;
-
+    document.querySelector('#info2').innerHTML = pointDegree;
+    
     if (
         (pointDegree < Math.abs(compass) &&
         pointDegree + 15 > Math.abs(compass)) ||
@@ -94,8 +96,6 @@ let locationHandler = (position) => {
 
     let { latitude, longitude } = position.coords;
     pointDegree = calcDegreeToPoint(latitude, longitude);
-
-    document.querySelector('#info2').innerHTML = pointDegree;
 
     if (pointDegree < 0) {
         pointDegree = pointDegree + 360;
