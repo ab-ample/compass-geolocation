@@ -79,7 +79,7 @@ let handler = (event) => {
     compass3 = compass - compass2;
 
     //COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
-    COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
+    document.body.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
 
 
     if (
