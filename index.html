@@ -5,21 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compass</title>
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="compass">
-      <div class="arrow"></div>
-      <div class="compass-circle"></div>
-      <div class="my-point"></div>
+    <div class="popup">
+        <select name="location" class="locations">
+            <option value="Drachenbrunnen">Drachenbrunnen</option>
+            <option value="Lidl" selected="selected">Lidl</option>
+            <option value="U Kottbusser Tor">U Kottbusser Tor</option>
+        </select>
+        <button class="start-btn">Start</button>
     </div>
-    <select name="location" class="locations">
-      <option value="Drachenbrunnen">Drachenbrunnen</option>
-      <option value="Lidl" selected="selected">Lidl</option>
-      <option value="U Kottbusser Tor">U Kottbusser Tor</option>
-    </select>
-    <button class="start-btn">Start</button>
-    <script src="js/main.js"></script>
+    <div id="guide">
+        <div id="title">Title</div>
+        <div id="direction">Direction</div>
+        <div id="distance">Your are 300 meters away</div>
+    </div>
+    <!--
+    <div class="compass">
+        <div class="arrow"></div>
+        <div class="compass-circle"></div>
+        <div class="my-point"></div>
+    </div>
+    -->
+    <!--<script src="js/main.js"></script>-->
     <script src="js/resize.js"></script>
-  </body>
+</body>
 </html>

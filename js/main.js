@@ -20,7 +20,7 @@ let point = locations[0]; // default Lidl
 let pointDegree;
 let compass2, compass3;
 
-const COMPASS_CIRCLE = document.querySelector(".compass-circle");
+const guide = document.querySelector("#guide");
 const MY_POINT = document.querySelector(".my-point");
 const START_BTN = document.querySelector(".start-btn");
 const SELECT = document.querySelector(".locations");
@@ -76,10 +76,9 @@ let handler = (event) => {
     compass = event.webkitCompassHeading || Math.abs(event.alpha - 360);
 
     compass2 = compass - pointDegree;
-    compass3 = compass - compass2;
 
-    //COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
-    document.body.style.transform = `rotate(${-compass2}deg)`;
+    //guide.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
+    guide.style.transform = `rotate(${-compass2}deg)`;
 
 
     if (
