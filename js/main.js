@@ -18,10 +18,10 @@ let locations = [
 
 let point = locations[0]; // default Lidl
 let pointDegree;
-let compass2, compass3;
+let compass2;
 
 const guide = document.querySelector("#guide");
-const MY_POINT = document.querySelector(".my-point");
+const direction = document.querySelector("#direction");
 const START_BTN = document.querySelector(".start-btn");
 const SELECT = document.querySelector(".locations");
 const isIOS = 
@@ -87,9 +87,9 @@ let handler = (event) => {
         pointDegree > Math.abs(compass + 15) ||
         pointDegree < Math.abs(compass)
     ) {
-        MY_POINT.style.opacity = 0;
+        direction.innerHTML = 'Not this way';
     } else if (pointDegree) {
-        MY_POINT.style.opacity = 1;
+        direction.innerHTML = 'This is the correct way';
     }
 }
 
