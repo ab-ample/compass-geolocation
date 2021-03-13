@@ -78,11 +78,9 @@ let handler = (event) => {
     compass2 = compass - pointDegree;
     compass3 = compass - compass2;
 
+    //COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
     COMPASS_CIRCLE.style.transform = `translate(-50%, -50%) rotate(${-compass2}deg)`;
 
-    document.querySelector('#info').innerHTML = compass;
-    document.querySelector('#info2').innerHTML = pointDegree;
-    document.querySelector('#info3').innerHTML = compass3;
 
     if (
         (pointDegree < Math.abs(compass) &&
